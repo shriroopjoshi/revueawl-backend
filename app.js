@@ -27,7 +27,8 @@ if (!isProduction) {
     app.use(errorhandler());
 }
 
-require('./src/routes');
+var routes = require('./src/routes');
+app.use('/', routes);
 
 // catch 404s and fwd to error handler
 app.use(function (req, res, next) {
