@@ -5,8 +5,12 @@ var path = require('path');
 var redisconn = require('../../utils/dbconn.js');
 var redis = require('redis');
 
-router.get('/location/:location', function (req, res) {
-    var location = { location: req.params.location };
+router.get('/location', function (req, res) {
+    var location = { 
+        city: req.query.city, 
+        state: req.query.state,
+        country: req.query.country  
+    };
     res.status(200).json(location);
 });
 
