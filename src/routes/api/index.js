@@ -3,7 +3,7 @@
 var router = require('express').Router();
 var path = require('path');
 var redisconn = require('../../utils/redisconn.js');
-var redis = require('redis');
+var zomato = require('../../services/zomato_service.js');
 
 router.get('/location', function (req, res) {
     var location = { 
@@ -11,6 +11,7 @@ router.get('/location', function (req, res) {
         state: req.query.state,
         country: req.query.country  
     };
+    zomato.fetch(location.city, location.state, location.country);
     res.status(200).json(location);
 });
 
